@@ -19,13 +19,12 @@ funcionario: any;
     this.initializeTable();
   }
 
+  //Adicionado o método findAll
   private initializeTable(): void {
     this.funcionarioService.findAll().subscribe(funcionarios => {
       this.dataSource = funcionarios;
     });
   }
-
-
 }
 
   
