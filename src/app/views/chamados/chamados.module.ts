@@ -9,6 +9,8 @@ import { ChamadosRoutingModule } from './chamados-routing.module';
 import { ChamadosComponent } from './chamados/chamados.component';
 import { NewChamadoComponent } from './new-chamado/new-chamado.component';
 import { EditChamadoComponent } from './edit-chamado/edit-chamado.component';
+import { SharedModule } from 'src/app/shared/shared.module';
+
 
 
 @NgModule({
@@ -24,7 +26,9 @@ import { EditChamadoComponent } from './edit-chamado/edit-chamado.component';
     MaterialModule,
     ReactiveFormsModule,
     FormsModule,
+    SharedModule
     MatProgressSpinnerModule
+    
   ]
 })
 export class ChamadosModule { }
