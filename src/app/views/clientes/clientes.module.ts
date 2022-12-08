@@ -8,13 +8,15 @@ import { ClientesRoutingModule } from './clientes-routing.module';
 import { ClientesComponent } from './clientes/clientes.component';
 import { NewClienteComponent } from './new-cliente/new-cliente.component';
 import { EditClienteComponent } from './edit-cliente/edit-cliente.component';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 
 @NgModule({
   declarations: [
     ClientesComponent,
     NewClienteComponent,
-    EditClienteComponent
+    EditClienteComponent,
+    
   ],
   imports: [
     CommonModule,
@@ -22,7 +24,8 @@ import { EditClienteComponent } from './edit-cliente/edit-cliente.component';
     ComponentsModule,
     MaterialModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    MatProgressSpinnerModule
   ]
 })
 export class ClientesModule { }
