@@ -37,4 +37,8 @@ export class AuthService {
     }
     return flag;
   }
+
+  public logout(): void {
+    localStorage.removeItem("token");
+  }
 }
