@@ -1,4 +1,8 @@
 <app-nav-bar>
+    <div class="loading-spinner" *ngIf="spinner else table"><mat-spinner></mat-spinner></div>
+    
+    <ng-template #table>
+
     <ng-container>
         <div class="container-title">
             <h2>Chamados</h2>
@@ -62,4 +66,5 @@
             <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
         </table>
     </ng-container>
+</ng-template>
 </app-nav-bar>
