@@ -3,6 +3,7 @@ import { MaterialModule } from './../../shared/material/material.module';
 import { ComponentsModule } from './../../components/components.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 import { ChamadosRoutingModule } from './chamados-routing.module';
 import { ChamadosComponent } from './chamados/chamados.component';
@@ -22,7 +23,8 @@ import { EditChamadoComponent } from './edit-chamado/edit-chamado.component';
     ComponentsModule,
     MaterialModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    MatProgressSpinnerModule
   ]
 })
 export class ChamadosModule { }
