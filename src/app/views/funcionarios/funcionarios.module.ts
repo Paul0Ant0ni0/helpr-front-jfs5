@@ -6,13 +6,15 @@ import { CommonModule } from '@angular/common';
 import { FuncionariosRoutingModule } from './funcionarios-routing.module';
 import { FuncionariosComponent } from './funcionarios/funcionarios.component';
 import { AvatarPipe } from 'src/app/pipes/avatar.pipe';
+import { NewFuncionariosComponent } from './new-funcionarios/new-funcionarios.component';
 
 
 
 @NgModule({
   declarations: [
     FuncionariosComponent,
-    AvatarPipe
+    AvatarPipe,
+    NewFuncionariosComponent
   ],
   imports: [
     CommonModule,

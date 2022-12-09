@@ -1,0 +1,48 @@
+<app-nav-bar>
+    <ng-container>
+        <h2>Cadastrar Novo Funcionário</h2>
+
+        <form [formGroup]="formFuncionario">
+            <mat-form-field class="full-width" appearance="fill">
+                <mat-label>Nome</mat-label>
+                <input type="text" name="nome" matInput formControlName="nome">
+            </mat-form-field>
+
+            <mat-form-field class="full-width" appearance="fill">
+                <mat-label>CPF</mat-label>
+                <input type="text" name="cpf" matInput formControlName="cpf">
+            </mat-form-field>
+
+            <mat-form-field class="full-width" appearance="fill">
+                <mat-label>E-mail</mat-label>
+                <input type="email" name="email" matInput  formControlName="email">
+            </mat-form-field>
+
+            <mat-form-field class="full-width" appearance="fill">
+                <mat-label>Senha</mat-label>
+                <input type="password" name="senha" matInput formControlName="senha">
+            </mat-form-field>
+
+            <mat-form-field class="full-width" appearance="fill" >
+                <mat-label>Perfil</mat-label>
+                <mat-select name="perfil" value="Selecione um perfil" formControlName="perfil" >
+                    <mat-option disabled >Selecione um perfil</mat-option>
+                    <mat-option *ngFor="let perfil of perfils" [value]="perfil">{{perfil}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field class="full-width" appearance="fill" >
+                <mat-label>Cargos</mat-label>
+                <mat-select name="perfil" value="Selecione um cargo" formControlName="cargo" >
+                    <mat-option disabled >Selecione um cargo</mat-option>
+                    <mat-option *ngFor="let cargo of cargos" [value]="cargo">{{cargo.nome}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+
+
+            <button type="submit" mat-raised-button color="primary" (click)="create()" routerLink="/funcionarios">Cadastrar</button>
+            <a type="button" mat-raised-button color="warn" routerLink="/funcionarios">Cancelar</a>
+        </form>
+        {{formFuncionario.value | json}}
+    </ng-container>
+</app-nav-bar>

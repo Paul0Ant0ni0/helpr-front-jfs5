@@ -26,7 +26,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
     MaterialModule,
     ReactiveFormsModule,
     FormsModule,
-    SharedModule
+    SharedModule,
     MatProgressSpinnerModule
     
   ]
