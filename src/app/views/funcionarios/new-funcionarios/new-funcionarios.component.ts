@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import { Funcionario } from 'src/app/models/funcionario';
 import { FuncionarioService } from 'src/app/services/funcionario.service';
 import { Perfil } from 'src/app/enums/perfil.enum';
+import { Cargos } from 'src/app/models/cargos';
+import { CargosService } from 'src/app/services/cargos.service';
 
 
 @Component({
@@ -19,12 +21,13 @@ export class NewFuncionariosComponent implements OnInit {
 
   public perfils: Perfil[] = [];
 
-  public cargos: any[] = [];
+  public cargos: Cargos[] = [];
 
   constructor(
     formBuilder: FormBuilder,
     private funcionarioService: FuncionarioService,
-    private router: Router) {
+    private router: Router, 
+    private cargoService : CargosService) {
     this.formFuncionario = formBuilder.group({
       nome: ["", [Validators.required]],
       cpf: ["", [Validators.required]],
@@ -48,21 +51,10 @@ export class NewFuncionariosComponent implements OnInit {
   }
 
   public initializeCargos(): void{
-    this.cargos.push(
-      {
-        idCargo: 1,
-        nome: "Diretor Geral",
-        descricao: "Gerencia a empresa",
-        salario: 30000.0
-      },
-      {
-        idCargo: 3,
-        nome: "Técnico Geral",
-        descricao: "Resolve os chamados urgentes",
-        salario: 12000.0
-      }
-
-    )
+    this.cargoService.findAll().subscribe(cargos => {
+      this.cargos = cargos
+    })
+    
   }
 
 
