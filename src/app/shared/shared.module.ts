@@ -5,7 +5,8 @@ import { IconsPipe } from './pipes/icons.pipe';
 
 @NgModule({
   declarations: [
-    IconsPipe
+    IconsPipe,
+    
   ],
   imports: [
     CommonModule

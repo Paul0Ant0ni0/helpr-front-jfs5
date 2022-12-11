@@ -23,7 +23,7 @@ import { PipesModule } from 'src/app/pipes/pipes.module';
     MaterialModule,
     ReactiveFormsModule,
     FormsModule,
-    PipesModule
+    PipesModule,
   
   ]
 })

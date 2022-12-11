@@ -1,6 +1,7 @@
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { NgModule, DEFAULT_CURRENCY_CODE, LOCALE_ID } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { AngularFireModule } from '@angular/fire/compat';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -10,6 +11,7 @@ import { JwtModule } from '@auth0/angular-jwt';
 import { MatIconModule } from '@angular/material/icon';
 import ptBr from '@angular/common/locales/pt';
 import { registerLocaleData } from '@angular/common';
+import { environment } from 'src/environments/environment';
 
 registerLocaleData(ptBr);
 
@@ -25,7 +27,10 @@ registerLocaleData(ptBr);
     BrowserAnimationsModule,
     HttpClientModule,
     JwtModule,
-    MatIconModule
+    MatIconModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireModule
+  
   ],
   providers: [
     {

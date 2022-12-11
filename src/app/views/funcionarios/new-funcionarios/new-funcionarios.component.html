@@ -24,7 +24,7 @@
 
             <mat-form-field class="full-width" appearance="fill">
                 <mat-label>E-mail</mat-label>
-                <input type="email" name="email" matInput  formControlName="email">
+                <input type="email" name="email" matInput formControlName="email">
                 <mat-error *ngIf="formFuncionario.get('email')?.getError('required')">
                     O campo email é obrigatório
                 </mat-error>
@@ -41,10 +41,10 @@
                 </mat-error>
             </mat-form-field>
 
-            <mat-form-field class="full-width" appearance="fill" >
+            <mat-form-field class="full-width" appearance="fill">
                 <mat-label>Perfil</mat-label>
-                <mat-select name="perfil" value="Selecione um perfil" formControlName="perfil" >
-                    <mat-option disabled >Selecione um perfil</mat-option>
+                <mat-select name="perfil" value="Selecione um perfil" formControlName="perfil">
+                    <mat-option disabled>Selecione um perfil</mat-option>
                     <mat-option *ngFor="let perfil of perfils" [value]="perfil">{{perfil}}</mat-option>
                 </mat-select>
                 <mat-error *ngIf="formFuncionario.get('perfil')?.getError('required')">
@@ -52,21 +52,27 @@
                 </mat-error>
             </mat-form-field>
 
-            <mat-form-field class="full-width" appearance="fill" >
+            <mat-form-field class="full-width" appearance="fill">
                 <mat-label>Cargos</mat-label>
-                <mat-select name="cargo" value="Selecione um cargo" formControlName="cargo" >
-                    <mat-option disabled >Selecione um cargo</mat-option>
+                <mat-select name="cargo" value="Selecione um cargo" formControlName="cargo">
+                    <mat-option disabled>Selecione um cargo</mat-option>
                     <mat-option *ngFor="let cargo of cargos" [value]="cargo">{{cargo.nome}}</mat-option>
                 </mat-select>
                 <mat-error *ngIf="formFuncionario.get('cargo')?.getError('required')">
                     O campo senha é obrigatório
                 </mat-error>
             </mat-form-field>
+            <div class="full-width input-file">
+                <label for="foto">Selecione uma foto: </label>
+                <input type="file" (change)="uploadFile($event)" required>
+                <mat-progress-bar mode="indeterminate" *ngIf="isLoadUpload"></mat-progress-bar>
+            </div>
 
 
-            <button type="submit" mat-raised-button color="primary" (click)="create()" routerLink="/funcionarios">Cadastrar</button>
+            <button type="submit" mat-raised-button color="primary" (click)="create()"
+                routerLink="/funcionarios">Cadastrar</button>
             <a type="button" mat-raised-button color="warn" routerLink="/funcionarios">Cancelar</a>
         </form>
-    
+
     </ng-container>
 </app-nav-bar>
