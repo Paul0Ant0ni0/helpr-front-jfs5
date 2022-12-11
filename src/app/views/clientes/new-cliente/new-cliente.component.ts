@@ -3,6 +3,7 @@ import { ClienteService } from './../../../services/cliente.service';
 import { Cliente } from 'src/app/models/cliente';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
+import { Perfil } from 'src/app/enums/perfil.enum';
 
 @Component({
   selector: 'app-new-cliente',
@@ -12,6 +13,8 @@ import { Component, OnInit } from '@angular/core';
 export class NewClienteComponent implements OnInit {
 
   public formCliente: FormGroup;
+  public  hide: boolean = true;
+
 
   constructor(
     formBuilder: FormBuilder,
@@ -21,8 +24,9 @@ export class NewClienteComponent implements OnInit {
     this.formCliente = formBuilder.group({
       nome: ["", [Validators.required]],
       email: ["", [Validators.required, Validators.email]],
-      cpf: ["", [Validators.required]],
+      cpf: ["", [Validators.required, Validators.maxLength(11), Validators.minLength(11)]],
       telefone: ["", [Validators.required]],
+      perfil: Perfil.CLIENTE,
       senha: ["", [Validators.required]]
     })
   }

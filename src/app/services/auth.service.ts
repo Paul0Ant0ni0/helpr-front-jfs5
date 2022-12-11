@@ -6,6 +6,8 @@ import { Injectable } from '@angular/core';
 import { Observable, EMPTY } from 'rxjs';
 import { tap, catchError } from 'rxjs/operators';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { Perfil } from '../enums/perfil.enum';
+import { Usuario } from '../models/usuario';
 
 @Injectable({
   providedIn: 'root'
@@ -28,6 +30,8 @@ export class AuthService {
       })
     );
   }
+
+
 
   public isAuthenticate(): boolean {
     let flag: boolean = false;

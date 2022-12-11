@@ -24,7 +24,7 @@
 
             <ng-container matColumnDef="cpf">
                 <th mat-header-cell *matHeaderCellDef> CPF </th>
-                <td mat-cell *matCellDef="let cliente"> {{cliente.cpf}} </td>
+                <td mat-cell *matCellDef="let cliente"> {{cliente.cpf | cpf}} </td>
             </ng-container>
 
             <ng-container matColumnDef="email">

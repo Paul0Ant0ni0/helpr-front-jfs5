@@ -9,6 +9,7 @@ import { ClientesComponent } from './clientes/clientes.component';
 import { NewClienteComponent } from './new-cliente/new-cliente.component';
 import { EditClienteComponent } from './edit-cliente/edit-cliente.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { PipesModule } from 'src/app/pipes/pipes.module';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     MaterialModule,
     ReactiveFormsModule,
     FormsModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    PipesModule
   ]
 })
 export class ClientesModule { }

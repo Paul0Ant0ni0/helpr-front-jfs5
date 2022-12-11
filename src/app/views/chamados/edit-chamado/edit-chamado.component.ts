@@ -5,8 +5,10 @@ import { from } from 'rxjs';
 import { Status } from 'src/app/enums/status.enum';
 import { Chamado } from 'src/app/models/chamado';
 import { Cliente } from 'src/app/models/cliente';
+import { Funcionario } from 'src/app/models/funcionario';
 import { ChamadoService } from 'src/app/services/chamado.service';
 import { ClienteService } from 'src/app/services/cliente.service';
+import { FuncionarioService } from 'src/app/services/funcionario.service';
 
 @Component({
   selector: 'app-edit-chamado',
@@ -16,7 +18,7 @@ import { ClienteService } from 'src/app/services/cliente.service';
 export class EditChamadoComponent implements OnInit {
 
   public clientes: Cliente[] = [];
-  public funcionarios: any[] = [];
+  public funcionarios: Funcionario[] = [];
   public statuss: Status[] = [];
 
 
@@ -51,6 +53,7 @@ export class EditChamadoComponent implements OnInit {
     private route: ActivatedRoute,
     private chamadoService: ChamadoService,
     private clienteService: ClienteService,
+    private funcionarioService: FuncionarioService,
     private router: Router
   ) { }
 
@@ -70,17 +73,9 @@ export class EditChamadoComponent implements OnInit {
 
 
   private initializeFuncionarios(): void {
-    this.funcionarios.push(
-      {
-        nome: "Renato Pereira",
-        id: 1
-      },
-
-      {
-        nome: "Victor Icoma",
-        id: 2
-      }
-      ,);
+    this.funcionarioService.findAll().subscribe(funcionarios => {
+      this.funcionarios = funcionarios;
+    })
   }
 
   private initalizeStatus(): void {

@@ -5,22 +5,46 @@
             <mat-form-field class="full-width" appearance="fill">
                 <mat-label>Nome</mat-label>
                 <input type="text" name="nome" matInput placeholder="Ex. Gabriel Braga" formControlName="nome">
+                <mat-error *ngIf="formCliente.get('nome')?.getError('required')">
+                    O campo nome é obrigatório
+                </mat-error>
             </mat-form-field>
             <mat-form-field class="full-width" appearance="fill">
                 <mat-label>CPF</mat-label>
                 <input type="text" name="cpf" matInput placeholder="Ex. 000.000.000-00" formControlName="cpf">
+                <mat-error *ngIf="formCliente.get('cpf')?.getError('maxlength')">
+                    É obrigatório no máximo 11 caracteres
+                </mat-error>
+                <mat-error *ngIf="formCliente.get('cpf')?.getError('minlength')">
+                    É obrigatório no mínimo 11 caracteres
+                </mat-error>
             </mat-form-field>
             <mat-form-field class="full-width" appearance="fill">
                 <mat-label>E-mail</mat-label>
                 <input type="email" name="email" matInput placeholder="Ex. gabriel@mail.com" formControlName="email">
+                <mat-error *ngIf="formCliente.get('email')?.getError('required')">
+                    O campo email é obrigatório
+                </mat-error>
+                <mat-error *ngIf="formCliente.get('email')?.getError('email')">
+                    Email inválido
+                </mat-error>
             </mat-form-field>
             <mat-form-field class="full-width" appearance="fill">
                 <mat-label>Telefone</mat-label>
                 <input type="tel" name="telefone" matInput formControlName="telefone">
+                <mat-error *ngIf="formCliente.get('telefone')?.getError('required')">
+                    O campo telefône é obrigatório
+                </mat-error>
             </mat-form-field>
             <mat-form-field class="full-width" appearance="fill">
                 <mat-label>Senha</mat-label>
-                <input type="password" name="senha" matInput formControlName="senha">
+                <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                  </button>
+                <input [type]="hide ? 'password' : 'text'" name="senha" matInput formControlName="senha">
+                <mat-error *ngIf="formCliente.get('senha')?.getError('required')">
+                    O campo senha é obrigatório
+                </mat-error>
             </mat-form-field>
 
             <button type="submit" mat-raised-button color="primary" (click)="create()">Cadastrar</button>

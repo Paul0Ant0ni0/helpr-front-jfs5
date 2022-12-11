@@ -20,7 +20,7 @@
 
             <ng-container matColumnDef="cpf">
                 <th mat-header-cell *matHeaderCellDef> CPF </th>
-                <td mat-cell *matCellDef="let funcionario"> {{funcionario.cpf}} </td>
+                <td mat-cell *matCellDef="let funcionario"> {{funcionario.cpf | cpf}} </td>
             </ng-container>
 
             <ng-container matColumnDef="email">

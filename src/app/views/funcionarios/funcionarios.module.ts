@@ -5,16 +5,15 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FuncionariosRoutingModule } from './funcionarios-routing.module';
 import { FuncionariosComponent } from './funcionarios/funcionarios.component';
-import { AvatarPipe } from 'src/app/pipes/avatar.pipe';
 import { NewFuncionariosComponent } from './new-funcionarios/new-funcionarios.component';
+import { PipesModule } from 'src/app/pipes/pipes.module';
 
 
 
 @NgModule({
   declarations: [
     FuncionariosComponent,
-    AvatarPipe,
-    NewFuncionariosComponent
+    NewFuncionariosComponent,
   ],
   imports: [
     CommonModule,
@@ -23,7 +22,8 @@ import { NewFuncionariosComponent } from './new-funcionarios/new-funcionarios.co
     ComponentsModule,
     MaterialModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    PipesModule
   
   ]
 })

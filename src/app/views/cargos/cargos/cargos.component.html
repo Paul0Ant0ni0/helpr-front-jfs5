@@ -29,7 +29,7 @@
 
             <ng-container matColumnDef="salario">
                 <th mat-header-cell *matHeaderCellDef> Salário </th>
-                <td mat-cell *matCellDef="let cargos">{{cargos.salario | currency: 'BRL'}} </td>
+                <td mat-cell *matCellDef="let cargos">{{cargos.salario | currency}} </td>
             </ng-container>
 
             <ng-container matColumnDef="editar">

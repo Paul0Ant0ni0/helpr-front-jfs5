@@ -2,7 +2,8 @@ import { Perfil } from "../enums/perfil.enum";
 import { Cargos } from "./cargos";
 
 export interface Funcionario {
-    idChamado?: number;
+    idCargo?: number;
+    id?: number;
     nome: string;
     email: string;
     cpf:string;
