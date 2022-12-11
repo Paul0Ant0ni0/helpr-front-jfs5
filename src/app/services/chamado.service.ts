@@ -55,7 +55,7 @@ export class ChamadoService {
       idCliente: chamado.cliente.id,
       idFuncionario: chamado.funcionario.id
     }
-
+    
     return this.http.put<Chamado>(`${API_CONFIG.baseUrl}/chamados/${chamado.idChamado}`, data).pipe(
       catchError(error => {
         alert("Erro ao editar chamado.");

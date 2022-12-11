@@ -12,6 +12,7 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
 
   public formLogin: FormGroup;
+  public  hide: boolean = true;
 
   constructor(
     formBuilder: FormBuilder,
@@ -28,10 +29,11 @@ export class LoginComponent implements OnInit {
   }
 
   public signIn(): void {
-    if(this.formLogin.valid) {
+    if (this.formLogin.valid) {
       // PROCESSO DE AUTENTICAR
       const credenciais: Credenciais = this.formLogin.value;
       this.authService.authenticate(credenciais).subscribe(response => {
+        localStorage.setItem("email", credenciais.email)
         alert("Bem-vindo(a)!");
         this.router.navigate(["/home"]);
       });
@@ -40,4 +42,6 @@ export class LoginComponent implements OnInit {
       alert("Dados inválidos.");
     }
   }
+
+
 }

@@ -1,4 +1,5 @@
 import { Cliente } from './cliente';
+import { Funcionario } from './funcionario';
 export interface Chamado {
     idChamado?: number;
     titulo: string;
@@ -6,6 +7,6 @@ export interface Chamado {
     dataAbertura?: string;
     dataFechamento?: string;
     status?: string;
-    funcionario: any;
+    funcionario: Funcionario;
     cliente: Cliente;
 }

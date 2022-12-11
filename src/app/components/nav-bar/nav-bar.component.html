@@ -1,6 +1,13 @@
 <mat-drawer-container autosize>
 
     <mat-drawer #drawer mode="over">
+
+        <section class="perfil-usuario" *ngIf="!isEmpty">
+            <img src="{{ funcionario.foto | avatar }}" alt="">
+            <p><b>Usuário:</b> {{ funcionario.nome }}</p>
+            <p><b>Perfil:</b> {{ funcionario.perfil }}</p>
+        </section>
+
         <mat-nav-list>
             <a mat-list-item routerLink="/home" routerLinkActive="active">
                 <i class="material-icons">home</i>
@@ -13,19 +20,19 @@
             <a mat-list-item routerLink="/chamados" routerLinkActive="active">
                 <i class="material-icons">perm_phone_msg</i>
                 Chamados
-         </a>
+            </a>
 
-         <a mat-list-item routerLink="/funcionarios" routerLinkActive="active">
-            <i class="material-icons">support_agent</i>
-            Funcionários
-            
-        </a>
+            <a mat-list-item routerLink="/funcionarios" routerLinkActive="active">
+                <i class="material-icons">support_agent</i>
+                Funcionários
 
-        <a mat-list-item routerLink="/cargos" routerLinkActive="active">
-            <i class="material-icons">badge</i>
-            Cargos
-            
-        </a>
+            </a>
+
+            <a mat-list-item routerLink="/cargos" routerLinkActive="active">
+                <i class="material-icons">badge</i>
+                Cargos
+
+            </a>
             <a mat-list-item (click)="logout()" routerLinkActive="active">
                 <i class="material-icons">logout</i>
                 Logout
@@ -39,7 +46,7 @@
                 <i class="material-icons">menu</i>
             </button>
         </mat-toolbar>
-        
+
         <div class="container">
             <ng-content></ng-content>
         </div>

@@ -4,10 +4,19 @@
         <mat-form-field class="full-width">
             <mat-label>E-mail</mat-label>
             <input type="email" matInput placeholder="E-mail" formControlName="email">
+            <mat-error *ngIf="formLogin.get('email')?.getError('required')">
+                O campo email é obrigatório
+            </mat-error>
         </mat-form-field>
         <mat-form-field class="full-width">
             <mat-label>Senha</mat-label>
-            <input type="password" matInput placeholder="Senha" formControlName="senha">
+            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+              </button>
+            <input [type]="hide ? 'password' : 'text'" matInput placeholder="Senha" formControlName="senha">
+            <mat-error *ngIf="formLogin.get('senha')?.getError('required')">
+                O campo senha é obrigatório
+            </mat-error>
         </mat-form-field>
         <button type="submit" mat-raised-button color="primary" class="full-width" (click)="signIn()">
             Entrar

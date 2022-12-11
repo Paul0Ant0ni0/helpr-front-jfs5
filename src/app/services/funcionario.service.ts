@@ -22,6 +22,16 @@ export class FuncionarioService {
       })
     );
     }
+
+    public findById(id: string): Observable<Funcionario>{
+      return this.http.get<Funcionario>(`${API_CONFIG.baseUrl}/funcionarios/${id}`).pipe(
+        catchError(error => {
+          alert("Erro ao buscar o funcionário.");
+          console.error(error);
+          return EMPTY;
+        })
+      );
+    }
      
 
     public create(funcionario: Funcionario): Observable<Funcionario> {

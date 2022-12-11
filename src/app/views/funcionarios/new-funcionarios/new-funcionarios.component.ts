@@ -28,6 +28,7 @@ export class NewFuncionariosComponent implements OnInit {
     private funcionarioService: FuncionarioService,
     private router: Router, 
     private cargoService : CargosService) {
+      
     this.formFuncionario = formBuilder.group({
       nome: ["", [Validators.required]],
       cpf: ["", [Validators.required]],
@@ -64,13 +65,10 @@ export class NewFuncionariosComponent implements OnInit {
       const funcionario: Funcionario = this.formFuncionario.value;
       this.funcionarioService.create(funcionario).subscribe(() => {
         this.router.navigate(["/funcionarios"]);
-        setTimeout(()=> {
-          alert("Funcionário cadastrado.");
-        },2000)
+        alert("Funcionário cadastrado.");
         
       });
-    }
-    else {
+    } else {
       alert("Dados inválidos.");
     }
   }

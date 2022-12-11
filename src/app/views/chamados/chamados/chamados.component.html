@@ -34,7 +34,7 @@
 
             <ng-container matColumnDef="dataAbertura">
                 <th mat-header-cell *matHeaderCellDef> Data de Abertura </th>
-                <td mat-cell *matCellDef="let chamado"> {{chamado.dataAbertura}} </td>
+                <td mat-cell *matCellDef="let chamado"> {{chamado.dataAbertura | date:'dd/MM/yyyy'}} </td>
             </ng-container>
 
             <ng-container matColumnDef="status">
