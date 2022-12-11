@@ -41,8 +41,17 @@ const routes: Routes = [
       ),
       title: 'Helpr | Funcionários'
   },
-];
 
+  {
+    path: 'cargos',
+    loadChildren: () =>
+      import('./views/cargos/cargos.module').then(
+        (m) => m.CargosModule
+      ),
+      title: 'Helpr | Cargos'
+  },
+]
+  
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
