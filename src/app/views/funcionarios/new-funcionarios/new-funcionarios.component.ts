@@ -6,6 +6,7 @@ import { FuncionarioService } from 'src/app/services/funcionario.service';
 import { Perfil } from 'src/app/enums/perfil.enum';
 import { Cargos } from 'src/app/models/cargos';
 import { CargosService } from 'src/app/services/cargos.service';
+import { StorageService } from 'src/app/services/storage.service';
 
 
 @Component({
@@ -23,11 +24,15 @@ export class NewFuncionariosComponent implements OnInit {
 
   public cargos: Cargos[] = [];
 
+  public fotoUrl: string = '';
+  public isLoadUpload: boolean = false;
+
   constructor(
-    formBuilder: FormBuilder,
     private funcionarioService: FuncionarioService,
-    private router: Router, 
-    private cargoService : CargosService) {
+    private storageService: StorageService,
+    private cargoService : CargosService,
+    formBuilder: FormBuilder,
+    private router: Router) {
       
     this.formFuncionario = formBuilder.group({
       nome: ["", [Validators.required]],
@@ -35,7 +40,7 @@ export class NewFuncionariosComponent implements OnInit {
       email: ["", [Validators.required, Validators.email]],
       senha: ["", [Validators.required]],
       perfil: ["", [Validators.required]],
-      foto: "",
+      foto: '',
       cargo: ["", [Validators.required]]
     })
   }
@@ -63,6 +68,7 @@ export class NewFuncionariosComponent implements OnInit {
   public create(): void {
     if (this.formFuncionario.valid) {
       const funcionario: Funcionario = this.formFuncionario.value;
+      funcionario.foto = this.fotoUrl;
       this.funcionarioService.create(funcionario).subscribe(() => {
         this.router.navigate(["/funcionarios"]);
         alert("Funcionário cadastrado.");
@@ -73,7 +79,21 @@ export class NewFuncionariosComponent implements OnInit {
     }
   }
 
+  
+  public uploadFile(event: any): void {
+    this.isLoadUpload = true;
+    const file: File = event.target.files[0];
+    this.storageService.uploadFoto(file).subscribe(uploadResult  => {
+      this.isLoadUpload = false;
+      const storageReference = uploadResult.ref;
+      const promiseFileUrl = storageReference.getDownloadURL(); 
+      promiseFileUrl.then((fotoUrl: string) => {
+      this.fotoUrl = fotoUrl;
+        
+      })
+    });
+
 
 }
 
-
+}

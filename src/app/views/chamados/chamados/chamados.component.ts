@@ -1,6 +1,7 @@
 import { ChamadoService } from './../../../services/chamado.service';
 import { Chamado } from './../../../models/chamado';
 import { Component, OnInit } from '@angular/core';
+import { MatTableDataSource } from '@angular/material/table';
 
 
 @Component({
@@ -21,12 +22,13 @@ export class ChamadosComponent implements OnInit {
     this.initializeTable();
   }
 
+
   private initializeTable(): void {
-    setTimeout(()=>
+    setTimeout(() =>
       this.chamadoService.findAll().subscribe(chamados => {
         this.dataSource = chamados;
         this.spinner = false;
-        
-      }),500)
-}
+
+      }), 500)
+  }
 }

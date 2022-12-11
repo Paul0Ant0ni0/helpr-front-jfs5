@@ -1,7 +1,7 @@
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from './../../shared/material/material.module';
 import { ComponentsModule } from './../../components/components.module';
-import { NgModule } from '@angular/core';
+import {  NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
@@ -17,7 +17,8 @@ import { SharedModule } from 'src/app/shared/shared.module';
   declarations: [
     ChamadosComponent,
     NewChamadoComponent,
-    EditChamadoComponent
+    EditChamadoComponent,
+    
   ],
   imports: [
     CommonModule,
@@ -27,8 +28,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
     ReactiveFormsModule,
     FormsModule,
     SharedModule,
-    MatProgressSpinnerModule
-    
+    MatProgressSpinnerModule,
   ]
 })
 export class ChamadosModule { }
