@@ -8,6 +8,8 @@ import { MatTableModule } from '@angular/material/table';
 import { MatSelectModule } from '@angular/material/select';
 import { MatIconModule } from '@angular/material/icon';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
+import {MatDialogModule} from '@angular/material/dialog';
+
 
 
 
@@ -21,7 +23,8 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
     MatTableModule,
     MatSelectModule,
     MatIconModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    MatDialogModule
 
   ]
 })

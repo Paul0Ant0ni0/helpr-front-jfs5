@@ -4,10 +4,12 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { PipesModule } from '../pipes/pipes.module';
+import { DetalhesComponent } from './detalhes/detalhes.component';
 
 @NgModule({
   declarations: [
-    NavBarComponent
+    NavBarComponent,
+    DetalhesComponent
     
 
   ],
