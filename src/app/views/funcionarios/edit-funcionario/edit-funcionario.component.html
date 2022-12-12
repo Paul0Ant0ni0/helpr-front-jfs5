@@ -1,0 +1,47 @@
+<app-nav-bar>
+    <ng-container>
+        <h2>Editar Funcionário</h2>
+
+        <form #formEdit="ngForm">
+            <mat-form-field class="full-width" appearance="fill">
+                <mat-label>Nome</mat-label>
+                <input type="text" name="nome" matInput [(ngModel)]="funcionario.nome" required>
+            </mat-form-field>
+
+            <mat-form-field class="full-width" appearance="fill">
+                <mat-label>CPF</mat-label>
+                <input type="text" name="cpf" matInput [(ngModel)]="funcionario.cpf" required>
+            </mat-form-field>
+
+            <mat-form-field class="full-width" appearance="fill">
+                <mat-label>E-mail</mat-label>
+                <input type="email" name="email" matInput [(ngModel)]="funcionario.email" required>
+            </mat-form-field>
+
+            <mat-form-field class="full-width" appearance="fill">
+                <mat-label>Senha</mat-label>
+                <input type="password" name="senha" matInput [(ngModel)]="funcionario.senha" required>
+            </mat-form-field>
+
+            <mat-form-field class="full-width" appearance="fill">
+                <mat-label>Cargos</mat-label>
+                <mat-select name="cargo" value="Selecione um cargo" [(ngModel)]="funcionario.cargo.idCargo" required>
+                    <mat-option disabled>Selecione um cargo</mat-option>
+                    <mat-option *ngFor="let cargo of cargos" [value]="cargo.idCargo">{{cargo.nome}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <div class="full-width input-file">
+                <label for="foto">Selecione uma foto: </label>
+                <input type="file" (change)="uploadFile($event)" required>
+                <mat-progress-bar mode="indeterminate" *ngIf="isLoadUpload"></mat-progress-bar>
+            </div>
+
+
+            <button type="submit" mat-raised-button color="primary" (click)="update(formEdit)"
+                routerLink="/funcionarios">Editar</button>
+            <a type="button" mat-raised-button color="warn" routerLink="/funcionarios">Cancelar</a>
+        </form>
+
+    </ng-container>
+</app-nav-bar>

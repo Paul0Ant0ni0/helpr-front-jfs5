@@ -21,4 +21,15 @@ export class StorageService {
       })
     );
   }
+
+  public deletar(photo: string): Observable<any>{
+    const promise = this.storage.refFromURL(photo).delete();
+    return from(promise).pipe(
+      catchError(error => {
+        alert("Erro ao deletar o arquivo.");
+        console.error(error);
+        return EMPTY;
+      })
+    );
+  }
 }

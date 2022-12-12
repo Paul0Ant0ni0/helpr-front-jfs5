@@ -30,13 +30,13 @@ export class NewFuncionariosComponent implements OnInit {
   constructor(
     private funcionarioService: FuncionarioService,
     private storageService: StorageService,
-    private cargoService : CargosService,
+    private cargoService: CargosService,
     formBuilder: FormBuilder,
     private router: Router) {
-      
+
     this.formFuncionario = formBuilder.group({
       nome: ["", [Validators.required]],
-      cpf: ["", [Validators.required]],
+      cpf: ["", [Validators.required, Validators.minLength(11), Validators.maxLength(11)]],
       email: ["", [Validators.required, Validators.email]],
       senha: ["", [Validators.required]],
       perfil: ["", [Validators.required]],
@@ -52,15 +52,15 @@ export class NewFuncionariosComponent implements OnInit {
 
 
   private initializePerfil(): void {
-    this.perfils = Object.values(Perfil)
+    this.perfils.push(Perfil.ADMIN, Perfil.FUNCIONARIO)
 
   }
 
-  public initializeCargos(): void{
+  public initializeCargos(): void {
     this.cargoService.findAll().subscribe(cargos => {
       this.cargos = cargos
     })
-    
+
   }
 
 
@@ -72,28 +72,26 @@ export class NewFuncionariosComponent implements OnInit {
       this.funcionarioService.create(funcionario).subscribe(() => {
         this.router.navigate(["/funcionarios"]);
         alert("Funcionário cadastrado.");
-        
+
       });
     } else {
       alert("Dados inválidos.");
     }
   }
 
-  
+
   public uploadFile(event: any): void {
     this.isLoadUpload = true;
     const file: File = event.target.files[0];
-    this.storageService.uploadFoto(file).subscribe(uploadResult  => {
+    this.storageService.uploadFoto(file).subscribe(uploadResult => {
       this.isLoadUpload = false;
       const storageReference = uploadResult.ref;
-      const promiseFileUrl = storageReference.getDownloadURL(); 
+      const promiseFileUrl = storageReference.getDownloadURL();
       promiseFileUrl.then((fotoUrl: string) => {
-      this.fotoUrl = fotoUrl;
-        
+        this.fotoUrl = fotoUrl;
+
       })
     });
-
-
-}
+  }
 
 }
