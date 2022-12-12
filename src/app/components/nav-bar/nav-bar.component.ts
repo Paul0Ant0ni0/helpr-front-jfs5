@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostBinding, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Perfil } from 'src/app/enums/perfil.enum';
 import { Funcionario } from 'src/app/models/funcionario';
@@ -13,7 +13,7 @@ import { Cargos } from 'src/app/models/cargos'
   styleUrls: ['./nav-bar.component.css']
 })
 export class NavBarComponent implements OnInit {
-
+  public theme: string = "theme-light";
   public isEmpty: boolean = true;
   public funcionario: Funcionario = {
     nome: '',
@@ -39,6 +39,8 @@ export class NavBarComponent implements OnInit {
 
   ngOnInit(): void {
     this.findByEmail();
+    let theme = localStorage.getItem("theme")
+   theme != null ? this.theme = theme : this.theme;
   }
 
   public logout(): void {
@@ -71,7 +73,19 @@ export class NavBarComponent implements OnInit {
     })
   }
 
+  @HostBinding('class')
+    public get themeMode(): String {
+   return this.theme == "theme-light" ? "theme-light" : "theme-dark"
 
-}
+          }
+
+  public updateTheme(): void {
+        this.theme == "theme-light" ? this.theme = "theme-dark" : this.theme = "theme-light"
+
+    localStorage.setItem("theme", this.theme)
+
+       }
+
+  }
 
 
