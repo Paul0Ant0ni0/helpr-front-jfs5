@@ -1,0 +1,30 @@
+form a,
+form button {
+    margin-left: 20px;
+    float: right;
+}
+
+.section {
+    margin-bottom: 20px;
+}
+
+.margin {
+    margin-right: 15px;
+}
+
+
+.input-file {
+    background-color: #F0F0F0;
+    height: 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #8B8B8B;
+}
+
+.input-file:hover {
+    border-bottom: 2px solid black;
+    cursor: pointer;
+}

@@ -8,7 +8,7 @@ export interface Funcionario {
     email: string;
     cpf:string;
     foto?: string;
-    perfil: Perfil;
+    perfil?: Perfil;
     cargo: Cargos;
     senha:string;
 }

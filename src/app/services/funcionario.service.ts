@@ -66,4 +66,22 @@ export class FuncionarioService {
     );
   }
 
+  public update(funcionario: Funcionario): Observable<Funcionario> {
+    const data = {
+      nome: funcionario.nome,
+      email:funcionario.email,
+      cpf: funcionario.cpf,
+      senha: funcionario.senha,
+      foto:funcionario.foto,
+      idCargo: funcionario.cargo.idCargo
+    }
+    return this.http.put<Funcionario>(`${API_CONFIG.baseUrl}/funcionarios/${funcionario.id}`, data).pipe(
+      catchError(error => {
+        alert("Erro ao editar funcionario.");
+        console.error(error);
+        return EMPTY;
+      })
+    );
+  }
+
   }

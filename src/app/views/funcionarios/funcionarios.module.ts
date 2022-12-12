@@ -7,6 +7,7 @@ import { FuncionariosRoutingModule } from './funcionarios-routing.module';
 import { FuncionariosComponent } from './funcionarios/funcionarios.component';
 import { NewFuncionariosComponent } from './new-funcionarios/new-funcionarios.component';
 import { PipesModule } from 'src/app/pipes/pipes.module';
+import { EditFuncionarioComponent } from './edit-funcionario/edit-funcionario.component';
 
 
 
@@ -14,6 +15,7 @@ import { PipesModule } from 'src/app/pipes/pipes.module';
   declarations: [
     FuncionariosComponent,
     NewFuncionariosComponent,
+    EditFuncionarioComponent,
   ],
   imports: [
     CommonModule,
