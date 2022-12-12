@@ -1,0 +1,24 @@
+<app-nav-bar>
+    <ng-container>
+        <h2>Editar Cargos</h2>
+        <form #formEdit="ngForm">
+            <mat-form-field class="full-width" appearance="fill">
+                <mat-label>Nome</mat-label>
+                <input type="text" name="nome" matInput [(ngModel)]="cargos.nome" required>
+            </mat-form-field>
+            <mat-form-field class="full-width" appearance="fill">
+                <mat-label>Descrição</mat-label>
+                <textarea name="descricao" matInput rows="2" [(ngModel)]="cargos.descricao" required></textarea>
+            </mat-form-field>
+
+            <mat-form-field class="full-width" appearance="fill">
+                <mat-label>Salario</mat-label>
+                <input type="number" name="salario" matInput [(ngModel)]="cargos.salario" required>
+            </mat-form-field>
+
+            <button type="submit" mat-raised-button color="primary" (click)="update(formEdit)">Cadastrar</button>
+            <a type="button" mat-raised-button color="warn" routerLink="/cargos">Cancelar</a>
+        </form>
+        
+    </ng-container>
+</app-nav-bar>
