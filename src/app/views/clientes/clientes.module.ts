@@ -10,6 +10,7 @@ import { NewClienteComponent } from './new-cliente/new-cliente.component';
 import { EditClienteComponent } from './edit-cliente/edit-cliente.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { PipesModule } from 'src/app/pipes/pipes.module';
+import { FuturosCandidatosComponent } from './futuros-candidatos/futuros-candidatos.component';
 
 
 @NgModule({
@@ -17,6 +18,7 @@ import { PipesModule } from 'src/app/pipes/pipes.module';
     ClientesComponent,
     NewClienteComponent,
     EditClienteComponent,
+    FuturosCandidatosComponent,
     
   ],
   imports: [
