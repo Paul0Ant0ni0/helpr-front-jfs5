@@ -9,7 +9,7 @@ import { Cargos } from 'src/app/models/cargos';
 })
 export class DetalhesComponent implements OnInit {
 
-  constructor(@Inject(MAT_DIALOG_DATA) public cargos : Cargos) { } 
+  constructor(@Inject(MAT_DIALOG_DATA) public cargos : Cargos ){ } 
 
   ngOnInit(): void {
   }

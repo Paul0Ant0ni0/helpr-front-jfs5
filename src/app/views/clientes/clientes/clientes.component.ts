@@ -2,6 +2,8 @@ import { ClienteService } from './../../../services/cliente.service';
 import { Component, OnInit } from '@angular/core';
 import { Cliente } from 'src/app/models/cliente';
 import { delay } from 'rxjs';
+import { MatDialog } from '@angular/material/dialog';
+import { DetalhesClienteComponent } from 'src/app/components/detalhes-cliente/detalhes-cliente.component';
 
 
 
@@ -12,11 +14,13 @@ import { delay } from 'rxjs';
 })
 export class ClientesComponent implements OnInit {
   
-  displayedColumns: string[] = ['id', 'nome', 'cpf', 'email', 'telefone', 'editar', 'excluir'];
+  displayedColumns: string[] = ['id', 'nome', 'cpf', 'email', 'telefone', 'editar', 'excluir', 'detalhesCliente'];
   dataSource: Cliente[] = [];
 
   
-  constructor(private clienteService: ClienteService) { }
+  constructor(private clienteService: ClienteService,
+    private dialogo: MatDialog
+) { }
 
   spinner: boolean = true;
 
@@ -26,8 +30,8 @@ export class ClientesComponent implements OnInit {
 
   private initializeTable(): void {
     setTimeout(()=>
-      this.clienteService.findAll().subscribe(clientes => {
-        this.dataSource = clientes;
+      this.clienteService.findAll().subscribe(cliente => {
+        this.dataSource = cliente;
         this.spinner = false;
         
       }),500);
@@ -42,4 +46,13 @@ export class ClientesComponent implements OnInit {
       });
     }
   }
+
+  public detalhesCliente(cliente: Cliente): void{
+    this.dialogo.open(DetalhesClienteComponent,{
+      width: "350px",
+      data: cliente
+    })
+  }
+  
+  
 }
