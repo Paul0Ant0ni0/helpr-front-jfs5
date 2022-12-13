@@ -1,5 +1,5 @@
 import { AuthInterceptor } from './interceptors/auth.interceptor';
-import { NgModule, DEFAULT_CURRENCY_CODE, LOCALE_ID } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AngularFireModule } from '@angular/fire/compat';
 
@@ -10,7 +10,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwtModule } from '@auth0/angular-jwt';
 import { MatIconModule } from '@angular/material/icon';
 import { environment } from 'src/environments/environment';
-
+import { ToastrModule } from 'ngx-toastr';
 
 
 @NgModule({
@@ -26,8 +26,14 @@ import { environment } from 'src/environments/environment';
     JwtModule,
     MatIconModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
-    AngularFireModule
-  
+    AngularFireModule,
+    BrowserAnimationsModule, 
+    ToastrModule.forRoot({
+      timeOut: 4000,
+      progressBar: true,
+      closeButton: true
+    }), 
+
   ],
   providers: [
     {
@@ -35,16 +41,10 @@ import { environment } from 'src/environments/environment';
       useClass: AuthInterceptor,
       multi: true
     },
-    {
-      provide: LOCALE_ID,
-      useValue: 'pt'
-    },
-    {
-      provide: DEFAULT_CURRENCY_CODE,
-      useValue: 'BRL'
-
-    }
+    
   ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+

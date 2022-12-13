@@ -22,7 +22,9 @@ import { DetalhesClienteComponent } from './detalhes-cliente/detalhes-cliente.co
     PipesModule
   ],
   exports: [
-    NavBarComponent
+    NavBarComponent,
+    DetalhesComponent,
+    DetalhesClienteComponent
   ]
 })
 export class ComponentsModule { }

@@ -6,6 +6,7 @@ import { AuthService } from 'src/app/services/auth.service';
 import { FuncionarioService } from 'src/app/services/funcionario.service';
 import { UsuarioService } from 'src/app/services/usuario.service';
 import { Cargos } from 'src/app/models/cargos'
+import { NotificationService } from 'src/app/services/notification.service';
 
 @Component({
   selector: 'app-nav-bar',
@@ -34,20 +35,21 @@ export class NavBarComponent implements OnInit {
     private authService: AuthService,
     private usuarioService: UsuarioService,
     private funcionarioService: FuncionarioService,
+    private notification: NotificationService,
     private router: Router
   ) { }
 
   ngOnInit(): void {
     this.findByEmail();
     let theme = localStorage.getItem("theme")
-   theme != null ? this.theme = theme : this.theme;
+    theme != null ? this.theme = theme : this.theme;
   }
 
   public logout(): void {
     this.authService.logout();
     localStorage.clear();
     this.router.navigate(['/login']);
-    alert("Até Logo!");
+    this.notification.showSuccess("SUCESSO!!!", "Até Logo!");
   };
 
 
@@ -74,18 +76,17 @@ export class NavBarComponent implements OnInit {
   }
 
   @HostBinding('class')
-    public get themeMode(): String {
-   return this.theme == "theme-light" ? "theme-light" : "theme-dark"
-
-          }
-
-  public updateTheme(): void {
-        this.theme == "theme-light" ? this.theme = "theme-dark" : this.theme = "theme-light"
-
-    localStorage.setItem("theme", this.theme)
-
-       }
+  public get themeMode(): String {
+    return this.theme == "theme-light" ? "theme-light" : "theme-dark"
 
   }
+
+  public updateTheme(): void {
+    this.theme == "theme-light" ? this.theme = "theme-dark" : this.theme = "theme-light"
+    localStorage.setItem("theme", this.theme)
+
+  }
+
+}
 
 

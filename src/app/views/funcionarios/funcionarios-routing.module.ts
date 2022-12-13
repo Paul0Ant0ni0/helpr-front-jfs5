@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { EditFuncionarioComponent } from './edit-funcionario/edit-funcionario.component';
 import { FuncionariosComponent } from './funcionarios/funcionarios.component'
 import { NewFuncionariosComponent } from './new-funcionarios/new-funcionarios.component';
+import { PerfilFuncionarioComponent } from './perfil-funcionario/perfil-funcionario.component';
 
 
 const routes: Routes = [
@@ -17,6 +18,10 @@ const routes: Routes = [
   {
     path:'edit/:id',
     component: EditFuncionarioComponent
+  },
+  {
+    path: 'meuperfil',
+    component: PerfilFuncionarioComponent
   }
 
 ];

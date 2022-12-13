@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { from } from 'rxjs';
 import { Status } from 'src/app/enums/status.enum';
 import { Chamado } from 'src/app/models/chamado';
 import { Cliente } from 'src/app/models/cliente';
@@ -9,6 +8,7 @@ import { Funcionario } from 'src/app/models/funcionario';
 import { ChamadoService } from 'src/app/services/chamado.service';
 import { ClienteService } from 'src/app/services/cliente.service';
 import { FuncionarioService } from 'src/app/services/funcionario.service';
+import { NotificationService } from 'src/app/services/notification.service';
 
 @Component({
   selector: 'app-edit-chamado',
@@ -54,6 +54,7 @@ export class EditChamadoComponent implements OnInit {
     private chamadoService: ChamadoService,
     private clienteService: ClienteService,
     private funcionarioService: FuncionarioService,
+    private notification: NotificationService,
     private router: Router
   ) { }
 
@@ -105,11 +106,11 @@ export class EditChamadoComponent implements OnInit {
     // ATUALIZAR CHAMADO
     if (form.valid) {
       this.chamadoService.update(this.chamado).subscribe(chamado => {
-        alert("Chamado editado com sucesso");
-        this.router.navigate(["/chamados"])
+        this.router.navigate(["/chamados"]);
+        this.notification.showSuccess("SUCESSO!!!", "Chamado editado com sucesso");
       })
     } else {
-      alert("Dados inválidos!")
+      this.notification.showError("ERRO!!!", "Dados inválidos!")
     }
 
   }

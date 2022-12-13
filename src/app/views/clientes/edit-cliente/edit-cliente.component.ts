@@ -3,6 +3,7 @@ import { Cliente } from './../../../models/cliente';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
+import { NotificationService } from 'src/app/services/notification.service';
 
 @Component({
   selector: 'app-edit-cliente',
@@ -22,6 +23,7 @@ export class EditClienteComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private clienteService: ClienteService,
+    private notification: NotificationService,
     private router: Router
   ) { }
 
@@ -41,12 +43,12 @@ export class EditClienteComponent implements OnInit {
   public update(formEdit: NgForm): void {
     if(formEdit.valid) {
       this.clienteService.update(this.cliente).subscribe(() => {
-        alert("Cliente editado.");
+        this.notification.showSuccess("SUCESSSO!!!","Cliente editado.");
         this.router.navigate(["/clientes"]);
       });
     }
     else {
-      alert("Dados inválidos.");
+      this.notification.showError("ERRO!!!", "Dados inválidos.");
     }
   }
 }

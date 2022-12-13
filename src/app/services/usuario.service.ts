@@ -5,6 +5,7 @@ import { Observable, EMPTY } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { Perfil } from '../enums/perfil.enum';
 import { Usuario } from '../models/usuario';
+import { NotificationService } from './notification.service';
 
 
 @Injectable({
@@ -13,7 +14,8 @@ import { Usuario } from '../models/usuario';
 export class UsuarioService {
 
   constructor(
-    private http: HttpClient
+    private http: HttpClient,
+    private notification: NotificationService
   ) { }
 
 
@@ -21,7 +23,7 @@ export class UsuarioService {
   public findByEmail(email: string): Observable<Usuario>{
     return this.http.get<Usuario>(`${API_CONFIG.baseUrl}/usuarios/email/${email}`).pipe(
       catchError(error => {
-        alert("Erro ao buscar o usuário!");
+        this.notification.showError("ERRO!!!", "Erro ao buscar o usuário!");
         console.error(error);
         return EMPTY;
       })
@@ -32,7 +34,7 @@ export class UsuarioService {
   public getPerfil(id: number):Observable<Perfil>{
     return this.http.get<Perfil>(`${API_CONFIG.baseUrl}/usuarios/${id}/perfil`).pipe(
       catchError(error => {
-        alert("Erro ao buscar o perfil do usuário!");
+        this.notification.showError("ERRO!!!", "Erro ao buscar o perfil do usuário!");
         console.error(error);
         return EMPTY;
       })
