@@ -9,11 +9,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwtModule } from '@auth0/angular-jwt';
 import { MatIconModule } from '@angular/material/icon';
-import ptBr from '@angular/common/locales/pt';
-import { registerLocaleData } from '@angular/common';
 import { environment } from 'src/environments/environment';
 
-registerLocaleData(ptBr);
 
 
 @NgModule({

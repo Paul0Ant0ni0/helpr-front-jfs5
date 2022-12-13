@@ -3,11 +3,12 @@ import { CargosRoutingModule } from './cargos-routing.module';
 import { CargosComponent } from './cargos/cargos.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from './../../shared/material/material.module';
-import { ComponentsModule } from './../../components/components.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
+
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { ComponentsModule } from 'src/app/components/components.module';
 
 
 @NgModule({
@@ -17,11 +18,11 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
   imports: [
     CommonModule,
     CargosRoutingModule,
-    ComponentsModule,
     MaterialModule,
     ReactiveFormsModule,
     FormsModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    ComponentsModule
   ]
 })
 export class CargosModule { }

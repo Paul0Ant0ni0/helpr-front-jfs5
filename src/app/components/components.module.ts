@@ -5,11 +5,13 @@ import { CommonModule } from '@angular/common';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { PipesModule } from '../pipes/pipes.module';
 import { DetalhesComponent } from './detalhes/detalhes.component';
+import { DetalhesClienteComponent } from './detalhes-cliente/detalhes-cliente.component';
 
 @NgModule({
   declarations: [
     NavBarComponent,
-    DetalhesComponent
+    DetalhesComponent,
+    DetalhesClienteComponent
     
 
   ],

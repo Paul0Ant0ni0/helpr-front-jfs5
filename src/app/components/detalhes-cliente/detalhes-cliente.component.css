@@ -1,0 +1,19 @@
+.container-detalhes {
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.container-detalhes p,
+.container-detalhes h3 {
+    font-size: 17px;
+    line-height: 25px;
+}
+
+button {
+    
+    margin-left: auto;
+}
+
+
+
