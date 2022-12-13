@@ -3,6 +3,7 @@ import { AuthService } from './../../../services/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { NotificationService } from 'src/app/services/notification.service';
 
 @Component({
   selector: 'app-login',
@@ -16,6 +17,7 @@ export class LoginComponent implements OnInit {
 
   constructor(
     formBuilder: FormBuilder,
+    private notification: NotificationService,
     private authService: AuthService,
     private router: Router
   ) {
@@ -34,12 +36,12 @@ export class LoginComponent implements OnInit {
       const credenciais: Credenciais = this.formLogin.value;
       this.authService.authenticate(credenciais).subscribe(response => {
         localStorage.setItem("email", credenciais.email)
-        alert("Bem-vindo(a)!");
+        this.notification.showSuccess("SUCESSO!!", "Bem-vindo(a)!");
         this.router.navigate(["/home"]);
       });
     }
     else {
-      alert("Dados inválidos.");
+      this.notification.showError("ERRO!!!", "Dados inválidos.");
     }
   }
 

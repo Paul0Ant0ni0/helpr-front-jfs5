@@ -1,0 +1,53 @@
+.container {
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+}
+
+
+#capa {
+    width: 100%;
+}
+
+.foto {
+    width: 250px;
+    height: 250px;
+    border: 5px solid white;
+    border-radius: 50%;
+    position: relative;
+    top: -85px;
+    left: 45px;
+}
+
+h3 {
+    color: rgb(145, 145, 145);
+    border-top: 2px solid black;
+    border-bottom: 2px solid black;
+    font-weight: bold;
+}
+
+
+.detalhes {
+    display: flex;
+    align-items: stretch;
+    justify-content: space-around;
+    box-shadow: 6px -2px 103px -7px rgba(209, 209, 209, 0.42);
+
+}
+
+.box {
+    width: 45%;
+    padding: 25px;
+}
+
+.box form{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.box form .style-inputs{
+    font-size: medium;
+    width: 100%;
+}

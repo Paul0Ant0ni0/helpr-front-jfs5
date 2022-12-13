@@ -4,19 +4,22 @@ import { Observable, EMPTY } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Funcionario } from '../models/funcionario';
+import { NotificationService } from './notification.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FuncionarioService {
 
-  constructor(private http: HttpClient) { }
+  constructor(
+    private http: HttpClient,
+    private notification: NotificationService) { }
 
   // Adicionado o método findAll
   public findAll(): Observable<Funcionario[]> {
     return this.http.get<Funcionario[]>(`${API_CONFIG.baseUrl}/funcionarios`).pipe(
       catchError(error => {
-        alert("Erro ao buscar dados do funcionário.");
+        this.notification.showError("ERRO!!!", "Erro ao buscar dados do funcionário.");
         console.error(error);
         return EMPTY;
       })
@@ -26,7 +29,7 @@ export class FuncionarioService {
     public findById(id: string): Observable<Funcionario>{
       return this.http.get<Funcionario>(`${API_CONFIG.baseUrl}/funcionarios/${id}`).pipe(
         catchError(error => {
-          alert("Erro ao buscar o funcionário.");
+          this.notification.showError("ERRO!!!", "Erro ao buscar o funcionário.");
           console.error(error);
           return EMPTY;
         })
@@ -47,7 +50,7 @@ export class FuncionarioService {
 
       return this.http.post<Funcionario>(`${API_CONFIG.baseUrl}/funcionarios`, data).pipe(
         catchError(error => {
-          alert("Erro ao criar novo funcionário.");
+          this.notification.showError("ERRO!!!", "Erro ao criar novo funcionário.");
           console.error(error);
           return EMPTY;
         })
@@ -59,7 +62,7 @@ export class FuncionarioService {
   public delete(id: number): Observable<Funcionario> {
     return this.http.delete<Funcionario>(`${API_CONFIG.baseUrl}/funcionarios/${id}`).pipe(
       catchError(error => {
-        alert("Erro ao excluir funcionário.");
+        this.notification.showError("ERRO!!!", "Erro ao excluir funcionário.");
         console.error(error);
         return EMPTY;
       })
@@ -77,7 +80,7 @@ export class FuncionarioService {
     }
     return this.http.put<Funcionario>(`${API_CONFIG.baseUrl}/funcionarios/${funcionario.id}`, data).pipe(
       catchError(error => {
-        alert("Erro ao editar funcionario.");
+        this.notification.showError("ERRO!!!", "Erro ao editar funcionario.");
         console.error(error);
         return EMPTY;
       })

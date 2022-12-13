@@ -8,6 +8,7 @@ import { tap, catchError } from 'rxjs/operators';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { Perfil } from '../enums/perfil.enum';
 import { Usuario } from '../models/usuario';
+import { NotificationService } from './notification.service';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +17,9 @@ export class AuthService {
 
   private jwt: JwtHelperService = new JwtHelperService();
 
-  constructor(private http: HttpClient) { }
+  constructor(
+    private http: HttpClient,
+    private notification: NotificationService) { }
 
   public authenticate(credenciais: Credenciais): Observable<Token> {
     return this.http.post<Token>(`${API_CONFIG.baseUrl}/auth/login`, credenciais).pipe(
@@ -24,7 +27,7 @@ export class AuthService {
         localStorage.setItem("token", token.accessToken);
       }),
       catchError(error => {
-        alert("Erro ao autenticar!");
+        this.notification.showError("ERRO!!!", "Erro ao autenticar!");
         console.error(error);
         return EMPTY;
       })

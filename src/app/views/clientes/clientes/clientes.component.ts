@@ -1,9 +1,9 @@
 import { ClienteService } from './../../../services/cliente.service';
 import { Component, OnInit } from '@angular/core';
 import { Cliente } from 'src/app/models/cliente';
-import { delay } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
 import { DetalhesClienteComponent } from 'src/app/components/detalhes-cliente/detalhes-cliente.component';
+import { NotificationService } from 'src/app/services/notification.service';
 
 
 
@@ -18,8 +18,10 @@ export class ClientesComponent implements OnInit {
   dataSource: Cliente[] = [];
 
   
-  constructor(private clienteService: ClienteService,
-    private dialogo: MatDialog
+  constructor(
+    private clienteService: ClienteService,
+    private dialogo: MatDialog,
+    private notificationService: NotificationService
 ) { }
 
   spinner: boolean = true;
@@ -41,7 +43,7 @@ export class ClientesComponent implements OnInit {
     let ok = confirm("Tem certeza que deseja excluir?");
     if(ok) {
       this.clienteService.delete(id).subscribe(() => {
-        alert("Cliente excluido.");
+        this.notificationService.showSuccess("SUCESSO!!!", "Cliente excluido.");
         this.initializeTable();
       });
     }

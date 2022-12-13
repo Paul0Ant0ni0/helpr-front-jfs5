@@ -5,6 +5,7 @@ import { ClienteService } from './../../../services/cliente.service';
 import { Cliente } from 'src/app/models/cliente';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
+import { NotificationService } from 'src/app/services/notification.service';
 
 @Component({
   selector: 'app-new-chamado',
@@ -21,6 +22,7 @@ export class NewChamadoComponent implements OnInit {
     formBuilder: FormBuilder,
     private clienteService: ClienteService,
     private chamadoService: ChamadoService,
+    private notification: NotificationService,
     private router: Router
   ) {
     this.formChamado = formBuilder.group({
@@ -44,12 +46,12 @@ export class NewChamadoComponent implements OnInit {
     if(this.formChamado.valid) {
       const chamado: Chamado = this.formChamado.value;
       this.chamadoService.create(chamado).subscribe(() => {
-        alert("Chamado cadastrado.");
+        this.notification.showSuccess("SUCESSO!!!", "Chamado cadastrado.");
         this.router.navigate(["/chamados"]);
       });
     }
     else {
-      alert("Dados inválidos.");
+      this.notification.showError("ERRO!!!", "Dados inválidos.");
     }
   }
 }

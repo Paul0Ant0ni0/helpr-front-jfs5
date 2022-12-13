@@ -8,6 +8,7 @@ import { FuncionariosComponent } from './funcionarios/funcionarios.component';
 import { NewFuncionariosComponent } from './new-funcionarios/new-funcionarios.component';
 import { PipesModule } from 'src/app/pipes/pipes.module';
 import { EditFuncionarioComponent } from './edit-funcionario/edit-funcionario.component';
+import { PerfilFuncionarioComponent } from './perfil-funcionario/perfil-funcionario.component';
 
 
 
@@ -16,6 +17,7 @@ import { EditFuncionarioComponent } from './edit-funcionario/edit-funcionario.co
     FuncionariosComponent,
     NewFuncionariosComponent,
     EditFuncionarioComponent,
+    PerfilFuncionarioComponent,
   ],
   imports: [
     CommonModule,

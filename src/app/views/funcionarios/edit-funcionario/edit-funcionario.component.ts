@@ -6,6 +6,7 @@ import { Cargos } from 'src/app/models/cargos';
 import { Funcionario } from 'src/app/models/funcionario';
 import { CargosService } from 'src/app/services/cargos.service';
 import { FuncionarioService } from 'src/app/services/funcionario.service';
+import { NotificationService } from 'src/app/services/notification.service';
 import { StorageService } from 'src/app/services/storage.service';
 
 @Component({
@@ -42,6 +43,7 @@ export class EditFuncionarioComponent implements OnInit {
     private route: ActivatedRoute,
     private funcionarioService: FuncionarioService,
     private storageService: StorageService,
+    private notification: NotificationService,
     private cargoService: CargosService
   ) { }
 
@@ -68,7 +70,6 @@ export class EditFuncionarioComponent implements OnInit {
     if (id) {
       this.funcionarioService.findById(id).subscribe(funcionario => {
         this.funcionario = funcionario;
-        console.log(funcionario)
       });
     }
   }
@@ -79,11 +80,11 @@ export class EditFuncionarioComponent implements OnInit {
       funcionario.foto = this.fotoUrl;
       this.funcionarioService.update(this.funcionario).subscribe(() => {
         this.router.navigate(["/funcionario"]);
-        // alert("Funcionário editado.");
+        this.notification.showSuccess("SUCESSO!!!", "Funcionário editado.")
       });
     }
     else {
-      alert("Dados inválidos.");
+    this.notification.showError("ERRO!!!", "Dados inválidos.");
     }
   }
 

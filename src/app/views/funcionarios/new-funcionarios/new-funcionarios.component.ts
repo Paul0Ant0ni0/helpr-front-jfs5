@@ -7,6 +7,7 @@ import { Perfil } from 'src/app/enums/perfil.enum';
 import { Cargos } from 'src/app/models/cargos';
 import { CargosService } from 'src/app/services/cargos.service';
 import { StorageService } from 'src/app/services/storage.service';
+import { NotificationService } from 'src/app/services/notification.service';
 
 
 @Component({
@@ -29,6 +30,7 @@ export class NewFuncionariosComponent implements OnInit {
 
   constructor(
     private funcionarioService: FuncionarioService,
+    private notification: NotificationService,
     private storageService: StorageService,
     private cargoService: CargosService,
     formBuilder: FormBuilder,
@@ -71,11 +73,11 @@ export class NewFuncionariosComponent implements OnInit {
       funcionario.foto = this.fotoUrl;
       this.funcionarioService.create(funcionario).subscribe(() => {
         this.router.navigate(["/funcionarios"]);
-        alert("Funcionário cadastrado.");
+        this.notification.showSuccess("SUCESSO!!!", "Funcionário cadastrado.");
 
       });
     } else {
-      alert("Dados inválidos.");
+      this.notification.showError("ERRO!!!", "Dados inválidos.");
     }
   }
 

@@ -1,0 +1,49 @@
+<app-nav-bar>
+    <ng-container>
+
+        <main class="container">
+
+            <img src="/assets/myperfil.png" alt="" id="capa">
+            <img src="{{usuario.foto | avatar}}" alt="" class="foto">
+            <section class="detalhes">
+                <div class="box">
+                    <h3>DADOS PESSOAIS <span>#{{usuario.id}}</span></h3>
+                    <form>
+                        <mat-form-field class="style-inputs" appearance="outline">
+                            <mat-label>Login </mat-label>
+                            <input matInput type="email"  value="{{usuario.email}}" disabled>
+                        </mat-form-field>
+                        <mat-form-field class="style-inputs" appearance="outline">
+                            <mat-label>Nome </mat-label>
+                            <input matInput type="text"  value="{{usuario.nome}}" disabled>
+                        </mat-form-field>
+                        <mat-form-field class="style-inputs" appearance="outline">
+                            <mat-label>Cpf </mat-label>
+                            <input matInput type="text"  value="{{usuario.cpf | cpf}}" disabled>
+                        </mat-form-field>
+                    </form>
+                </div>
+                <div class="box">
+                    <h3>INFORMAÇÕES COMPLEMENTARES</h3>
+                    <form>
+                        <mat-form-field class="style-inputs" appearance="outline">
+                            <mat-label>Cargo </mat-label>
+                            <input matInput type="email"  value="{{usuario.cargo.nome}}" disabled>
+                        </mat-form-field>
+                        <mat-form-field class="style-inputs" appearance="outline">
+                            <mat-label>Perfil </mat-label>
+                            <input matInput type="text"  value="{{usuario.perfil}}" disabled>
+                        </mat-form-field>
+                        <mat-form-field class="style-inputs" appearance="outline">
+                            <mat-label>Senha </mat-label>
+                            <input matInput type="text"  value="**************" disabled>
+                        </mat-form-field>
+                    </form>
+                  
+                </div>
+            </section>
+    
+        </main>
+    </ng-container>
+
+</app-nav-bar>

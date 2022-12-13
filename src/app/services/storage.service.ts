@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
 import { Observable, from, catchError, EMPTY } from 'rxjs';
+import { NotificationService } from './notification.service';
 
 @Injectable({
   providedIn: 'root'
@@ -8,14 +9,15 @@ import { Observable, from, catchError, EMPTY } from 'rxjs';
 export class StorageService {
 
   constructor(
-    private storage: AngularFireStorage
+    private storage: AngularFireStorage,
+    private notification: NotificationService
   ) { }
 
   public uploadFoto(photo: File): Observable<any> {
     const promise = this.storage.upload(`fotos/${Date.now()}`, photo);
     return from(promise).pipe(
       catchError(error => {
-        alert("Erro no envio do arquivo.");
+        this.notification.showError("ERRO!!!", "Erro no envio do arquivo.");
         console.error(error);
         return EMPTY;
       })
@@ -26,7 +28,7 @@ export class StorageService {
     const promise = this.storage.refFromURL(photo).delete();
     return from(promise).pipe(
       catchError(error => {
-        alert("Erro ao deletar o arquivo.");
+        this.notification.showError("ERRO!!!", "Erro ao deletar o arquivo.");
         console.error(error);
         return EMPTY;
       })

@@ -9,7 +9,7 @@ import { IconsPipe } from './pipes/icons.pipe';
     
   ],
   imports: [
-    CommonModule
+    CommonModule,
   ],
   exports: [
     IconsPipe

@@ -4,6 +4,7 @@ import { Cargos } from './../../../models/cargos';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
+import { NotificationService } from 'src/app/services/notification.service';
 
 @Component({
   selector: 'app-edit-cargo',
@@ -12,8 +13,8 @@ import { NgForm } from '@angular/forms';
 })
 export class EditCargoComponent implements OnInit {
 
- //spinner: boolean = true;
- 
+  //spinner: boolean = true;
+
   public cargos: Cargos = {
     idCargo: NaN,
     nome: '',
@@ -23,9 +24,10 @@ export class EditCargoComponent implements OnInit {
 
   constructor(
     private CargosService: CargosService,
+    private notificationService: NotificationService,
     private router: Router,
     private route: ActivatedRoute,
-    ) { }
+  ) { }
 
   ngOnInit(): void {
     this.initializeCargos();
@@ -33,7 +35,7 @@ export class EditCargoComponent implements OnInit {
 
   private initializeCargos(): void {
     const id: string | null = this.route.snapshot.paramMap.get('id');
-    if(id != null) {
+    if (id != null) {
       this.CargosService.findById(id).subscribe(cargos => {
         this.cargos = cargos;
       }
@@ -41,16 +43,16 @@ export class EditCargoComponent implements OnInit {
     }
   }
 
-public update(formEdit: NgForm): void {
-  if(formEdit.valid) {
-    this.CargosService.update(this.cargos).subscribe(cargos => {
-      alert("Cargo editado.");
-      this.router.navigate(["/cargos"]);
-    });
+  public update(formEdit: NgForm): void {
+    if (formEdit.valid) {
+      this.CargosService.update(this.cargos).subscribe(cargos => {
+        this.notificationService.showSuccess("SUCESSO!!!","Cargo editado.");
+        this.router.navigate(["/cargos"]);
+      });
+    }
+    else {
+      this.notificationService.showError("ERRO!!!", "Dados inválidos.");
+    }
   }
-  else {
-    alert("Dados inválidos.");
-  }
-}
 
 }
